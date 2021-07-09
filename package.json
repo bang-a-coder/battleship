@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack serve --open"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/bang-a-coder/battleship#readme",
   "devDependencies": {
     "css-loader": "^5.2.6",
+    "jest": "^27.0.6",
     "node-sass": "^6.0.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.0.0",
