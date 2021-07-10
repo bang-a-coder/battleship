@@ -55,6 +55,8 @@ test('identify after battle', ()=>{
 	})
 })
 
+
+
 let destoyer = _ship({
 	name: 'destroyer',
 	len: 2,
