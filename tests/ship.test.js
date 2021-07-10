@@ -1,6 +1,14 @@
-import { ship } from "../src/ship";
+import { _ship } from "../src/ship";
 
 
-test('adds 1 + 2 to equal 3', () => {
-	expect(ship(1, 2)).toBe(3);
-      });
+test('init ship', () => {
+	expect(_ship({
+		name: 'cruiser',
+		len: 3,
+		sunk: false
+	})).toMatchObject({
+		name: 'cruiser',
+		hull: [0,0,0],
+		sunk: false
+	})
+      })
