@@ -11,10 +11,15 @@ class Ship {
 		if (n > this.hull.length) return this.hull
 
 		this.hull[n] = 1
+		this.isSunk()
 		return this.hull
 	}
 
+	isSunk(){
+		if (this.hull.every(el => el === 1)) this.sunk = true
 
+		return this.sunk
+	}
 }
 
 
