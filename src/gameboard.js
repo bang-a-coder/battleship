@@ -110,10 +110,6 @@ export function _gameboard(obj){
 }
 
 
-
-
-
-
 export function decipherCors(str){
 	let abRef = 'ABCDEFGHIJ'
 	let brokenStr = str.split('')
