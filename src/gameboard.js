@@ -56,7 +56,7 @@ class Gameboard{
 		return this.grid
 	}
 
-	addShipToFleet(name, ship){
+	addShipToFleet(name, ship){		//add the instanse of the ship to the directory
 		this.fleetFormation[name] = {
 			boat: ship,
 			cors: []
@@ -65,7 +65,7 @@ class Gameboard{
 		return this.fleetFormation
 	}
 
-	updateShipCors(name, corIndex, cors){
+	updateShipCors(name, corIndex, cors){	//add a ship's corresponding coordinates to it's fleet directory instance
 		this.fleetFormation[name].cors[corIndex] = cors
 
 		return this.fleetFormation
