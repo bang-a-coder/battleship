@@ -1,3 +1,4 @@
+import { getShipLen } from "../src/gameboard";
 import { _ship } from "../src/ship";
 
 
@@ -73,3 +74,4 @@ test('destroyer after battle', ()=>{
 		sunk: true
 	})
 })
+

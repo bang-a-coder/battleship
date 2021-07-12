@@ -1,4 +1,4 @@
-import { decipherCors, _gameboard } from "../src/gameboard";
+import { decipherCors, getShipLen, _gameboard } from "../src/gameboard";
 
 test('grid init', ()=>{
 	expect(_gameboard(10)).toMatchObject({
@@ -48,7 +48,7 @@ test('place carrier buoy', ()=>{
 	})
 		
 
-test('place carrier A0-A4', ()=>{
+test('place carrier A0-A3', ()=>{
 	expect(testBoard.placeShip(4, 'x', 'A0')).toEqual([
 		[1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -77,5 +77,54 @@ test('place battleship A0-D0', ()=>{
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 		])
 	})
+
+test('place battleship C0-C2', ()=>{
+	expect(testBoard.placeShip(3, 'x', 'C0')).toEqual([
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		])
+	})
+
+test('place battleship E5-D0', ()=>{
+	expect(testBoard.placeShip(5, 'y', 'E5')).toEqual([
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		])
+	})
+
+xtest('place battleship E9-E11', ()=>{
+	expect(testBoard.placeShip(3, 'x', 'E9')).toEqual([
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		])
+})
 		
+
+test('getShipLen carrier', ()=>{
+	expect(getShipLen('carrier')).toEqual(5)
+})
 

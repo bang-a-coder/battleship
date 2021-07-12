@@ -19,7 +19,6 @@ class Gameboard{
 	}
 
 	placeShip(ship, orient, pin) {
-
 		let len = ship
 		let cors = decipherCors(pin)
 
@@ -34,25 +33,37 @@ class Gameboard{
 				this.grid[cors[0]+i][cors[1]] = 1
 			}
 		}
-	
 
-		console.log(this.grid)
+
 		return this.grid
 	}
-
-
 }
 
 export function _gameboard(obj){
 	return new Gameboard(obj)
 }
 
+
+
+
+
+
 export function decipherCors(str){
 	let abRef = 'ABCDEFGHIJ'
-
 	let brokenStr = str.split('')
 
-	let arr = [abRef.indexOf(brokenStr[0]), parseInt(brokenStr[1])]
+	return [abRef.indexOf(brokenStr[0]), parseInt(brokenStr[1])]
+}
 
-	return arr
+export function getShipLen(name){
+	const fleet = {
+		'carrier': 5,
+		'battleship': 4,
+		'cruiser': 3,
+		'sub': 3,
+		'destroyer': 2,
+		'jetski': 1
+	}
+
+	return fleet[name]
 }
