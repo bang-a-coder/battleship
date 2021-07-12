@@ -1,3 +1,5 @@
+import { _ship } from "./ship"
+
 class Gameboard{
 	constructor(n){
 		this.grid = []
@@ -18,8 +20,13 @@ class Gameboard{
 		return this.grid
 	}
 
-	placeShip(ship, orient, pin) {
-		let len = ship
+	placeShip(name, orient, pin) {
+		let newShip = _ship({
+			name: name,
+			sunk: false
+		})
+
+		let len = newShip.hull.length
 		let cors = decipherCors(pin)
 
 		if(orient === 'x'){
