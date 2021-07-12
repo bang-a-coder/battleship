@@ -9,6 +9,8 @@ class Gameboard{
 		// 1 -> boat there
 		// 2 -> hit miss
 		// 3 -> hit boat
+
+		this.fleetFormation = {}
 	}
 
 	createGrid(n){
@@ -41,6 +43,28 @@ class Gameboard{
 			}
 		}
 
+		//TODO Edge case support, litteraly edgecase when you place a ship beyond the board
+		//or ship on top of ship
+
+
+		return this.grid
+	}
+
+	receiveAttack(cors){
+		let attackCors = decipherCors(cors)
+		let location = this.grid[attackCors[0]][attackCors[1]]
+
+		if (location === 0 ) {
+			this.grid[attackCors[0]][attackCors[1]] = 2
+
+			return this.grid
+		}
+
+		if (location === 1) {
+			this.grid[attackCors[0]][attackCors[1]] = 3
+
+			return this.grid
+		}
 
 		return this.grid
 	}
