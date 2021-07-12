@@ -14,7 +14,7 @@ class Gameboard{
 		this.hitBoatCount = 0
 	}
 
-	createGrid(n){
+	createGrid(n){			//TODO refactor to support multiple dimensions, trip balls, fuck bitches
 		for (let i = 0; i < n; i++){
 			this.grid[i] = []
 			for (let j = 0; j < n; j++){ this.grid[i][j] = 0 }
