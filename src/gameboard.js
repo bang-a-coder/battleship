@@ -83,7 +83,6 @@ class Gameboard{
 
 		if (location === 1) {
 			this.grid[attackCors[0]][attackCors[1]] = 3
-
 			this.findAndHitShip(coordinates)
 
 			return this.grid
@@ -93,15 +92,13 @@ class Gameboard{
 	}
 
 	findAndHitShip(coordinates){
-		for (const ship in this.fleetFormation){					//check which ship in the fleet is possitioned on the attack location
-			// console.log(this.fleetFormation[ship].cors)
+		for (const ship in this.fleetFormation) { //check which ship in the fleet is possitioned on the attack location
 			let vessel = this.fleetFormation[ship]
 
 			for (let i = 0; i<vessel.cors.length; i++){
 				if (JSON.stringify(vessel.cors[i]) === JSON.stringify(decipherCors(coordinates))) {
-					
+
 					vessel.boat.hit(i)
-					console.log(vessel.boat, vessel.boat.hull)
 				}
 			}
 		}	
