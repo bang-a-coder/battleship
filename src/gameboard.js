@@ -23,15 +23,15 @@ class Gameboard{
 	}
 
 	placeShip(name, orient, pin) {
-		let newShip = _ship({
+		const newShip = _ship({
 			name: name,
 			sunk: false
 		})
 
 		this.addShipToFleet(name, newShip)
 
-		let len = newShip.hull.length
-		let cors = decipherCors(pin)
+		const len = newShip.hull.length
+		const cors = decipherCors(pin)
 
 		if(orient === 'x'){
 			for (let i =0; i<len; i++){
@@ -47,7 +47,7 @@ class Gameboard{
 			}
 		}
 
-		console.log(this.fleetFormation)
+		// console.log(this.fleetFormation)
 
 		//TODO Edge case support, litteraly edgecase when you place a ship beyond the board
 		//or ship on top of ship
@@ -71,8 +71,8 @@ class Gameboard{
 		return this.fleetFormation
 	}
 
-	receiveAttack(cors){
-		let attackCors = decipherCors(cors)
+	receiveAttack(coordinates){
+		let attackCors = decipherCors(coordinates)
 		let location = this.grid[attackCors[0]][attackCors[1]]
 
 		if (location === 0 ) {
@@ -84,10 +84,27 @@ class Gameboard{
 		if (location === 1) {
 			this.grid[attackCors[0]][attackCors[1]] = 3
 
+			this.findAndHitShip(coordinates)
+
 			return this.grid
 		}
 
 		return this.grid
+	}
+
+	findAndHitShip(coordinates){
+		for (const ship in this.fleetFormation){					//check which ship in the fleet is possitioned on the attack location
+			// console.log(this.fleetFormation[ship].cors)
+			let vessel = this.fleetFormation[ship]
+
+			for (let i = 0; i<vessel.cors.length; i++){
+				if (JSON.stringify(vessel.cors[i]) === JSON.stringify(decipherCors(coordinates))) {
+					
+					vessel.boat.hit(i)
+					console.log(vessel.boat, vessel.boat.hull)
+				}
+			}
+		}	
 	}
 }
 
