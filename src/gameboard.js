@@ -28,26 +28,43 @@ class Gameboard{
 			sunk: false
 		})
 
+		this.addShipToFleet(name, newShip)
+
 		let len = newShip.hull.length
 		let cors = decipherCors(pin)
 
 		if(orient === 'x'){
 			for (let i =0; i<len; i++){
 				this.grid[cors[0]][cors[1]+i] = 1
+				this.fleetFormation[name].cors[i] = [cors[0],cors[1]+i] 
 			}
 		}
 
 		if(orient === 'y'){
 			for (let i =0; i<len; i++){
 				this.grid[cors[0]+i][cors[1]] = 1
+				this.fleetFormation[name].cors[i] = [cors[0]+i,cors[1]] 
+
 			}
 		}
+
+		console.log(this.fleetFormation)
 
 		//TODO Edge case support, litteraly edgecase when you place a ship beyond the board
 		//or ship on top of ship
 
 
 		return this.grid
+	}
+
+	addShipToFleet(name, ship){
+		this.fleetFormation[name] = {
+			boat: ship,
+			cors: []
+		}
+
+
+		return this.fleetFormation
 	}
 
 	receiveAttack(cors){

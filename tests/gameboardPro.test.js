@@ -1,4 +1,5 @@
 import { _gameboard } from "../src/gameboard";
+import { _ship } from "../src/ship";
 
 let gameboard = _gameboard(10);
 
