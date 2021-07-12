@@ -1,4 +1,4 @@
-import { decipherCors, getShipLen, _gameboard } from "../src/gameboard";
+import { decipherCors, _gameboard } from "../src/gameboard";
 
 test('grid init', ()=>{
 	expect(_gameboard(10)).toMatchObject({
@@ -32,8 +32,8 @@ beforeEach(()=>{
 	testBoard = _gameboard(10)
 })
 
-test('place carrier buoy', ()=>{
-	expect(testBoard.placeShip(1, 'x', 'A0')).toEqual([
+test('place jetski', ()=>{
+	expect(testBoard.placeShip('jetski', 'x', 'A0')).toEqual([
 		[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -48,8 +48,8 @@ test('place carrier buoy', ()=>{
 	})
 		
 
-test('place carrier A0-A3', ()=>{
-	expect(testBoard.placeShip(4, 'x', 'A0')).toEqual([
+test('place battleship A0-A3', ()=>{
+	expect(testBoard.placeShip('battleship', 'x', 'A0')).toEqual([
 		[1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -64,7 +64,7 @@ test('place carrier A0-A3', ()=>{
 	})
 
 test('place battleship A0-D0', ()=>{
-	expect(testBoard.placeShip(4, 'y', 'A0')).toEqual([
+	expect(testBoard.placeShip('battleship', 'y', 'A0')).toEqual([
 		[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -78,8 +78,8 @@ test('place battleship A0-D0', ()=>{
 		])
 	})
 
-test('place battleship C0-C2', ()=>{
-	expect(testBoard.placeShip(3, 'x', 'C0')).toEqual([
+test('place cruiser C0-C2', ()=>{
+	expect(testBoard.placeShip('cruiser', 'x', 'C0')).toEqual([
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
@@ -93,8 +93,8 @@ test('place battleship C0-C2', ()=>{
 		])
 	})
 
-test('place battleship E5-D0', ()=>{
-	expect(testBoard.placeShip(5, 'y', 'E5')).toEqual([
+test('place carrier E5-D0', ()=>{
+	expect(testBoard.placeShip('carrier', 'y', 'E5')).toEqual([
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -124,7 +124,5 @@ xtest('place battleship E9-E11', ()=>{
 })
 		
 
-test('getShipLen carrier', ()=>{
-	expect(getShipLen('carrier')).toEqual(5)
-})
+
 

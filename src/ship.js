@@ -4,7 +4,7 @@ class Ship {
 		this.hull = []
 		this.sunk = obj.sunk
 
-		for (let i=0; i<obj.len; i++) { this.hull.push(0) }	
+		for (let i=0; i<getShipLen(obj.name); i++) { this.hull.push(0) }	
 	}
 
 	hit(n){
@@ -25,4 +25,17 @@ class Ship {
 
 export function _ship(obj) {
 	return new Ship(obj)
+}
+
+export function getShipLen(name){
+	const fleet = {
+		'carrier': 5,
+		'battleship': 4,
+		'cruiser': 3,
+		'sub': 3,
+		'destroyer': 2,
+		'jetski': 1
+	}
+
+	return fleet[name]
 }

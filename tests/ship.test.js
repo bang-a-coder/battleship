@@ -5,7 +5,6 @@ import { _ship } from "../src/ship";
 test('init ship', () => {
 	expect(_ship({
 		name: 'cruiser',
-		len: 3,
 		sunk: false
 	})).toMatchObject({
 		name: 'cruiser',
@@ -16,7 +15,6 @@ test('init ship', () => {
 
 let ship1 = _ship({
 	name: 'cruiser',
-	len: 3,
 	sunk: false
 })
 
@@ -60,7 +58,6 @@ test('identify after battle', ()=>{
 
 let destoyer = _ship({
 	name: 'destroyer',
-	len: 2,
 	sunk: false
 })
 
