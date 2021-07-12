@@ -36,15 +36,14 @@ class Gameboard{
 		if(orient === 'x'){
 			for (let i =0; i<len; i++){
 				this.grid[cors[0]][cors[1]+i] = 1
-				this.fleetFormation[name].cors[i] = [cors[0],cors[1]+i] 
+				this.updateShipCors(name, i, [cors[0],cors[1]+i])
 			}
 		}
 
 		if(orient === 'y'){
 			for (let i =0; i<len; i++){
 				this.grid[cors[0]+i][cors[1]] = 1
-				this.fleetFormation[name].cors[i] = [cors[0]+i,cors[1]] 
-
+				this.updateShipCors(name, i, [cors[0]+i,cors[1]])
 			}
 		}
 
@@ -63,6 +62,11 @@ class Gameboard{
 			cors: []
 		}
 
+		return this.fleetFormation
+	}
+
+	updateShipCors(name, corIndex, cors){
+		this.fleetFormation[name].cors[corIndex] = cors
 
 		return this.fleetFormation
 	}
