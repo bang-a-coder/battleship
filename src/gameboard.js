@@ -11,6 +11,7 @@ class Gameboard{
 		// 3 -> hit boat
 
 		this.fleetFormation = {}
+		this.hitBoatCount = 0
 	}
 
 	createGrid(n){
@@ -84,6 +85,8 @@ class Gameboard{
 		if (location === 1) {
 			this.grid[attackCors[0]][attackCors[1]] = 3
 			this.findAndHitShip(coordinates)
+			this.hitBoatCount++
+			if (this.hitBoatCount === 17) gameOver()
 
 			return this.grid
 		}
@@ -102,6 +105,10 @@ class Gameboard{
 				}
 			}
 		}	
+	}
+
+	gameOver(){
+		return
 	}
 }
 
