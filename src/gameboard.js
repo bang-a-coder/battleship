@@ -80,7 +80,7 @@ class Gameboard{
 		if (location === 0 ) {
 			this.grid[attackCors[0]][attackCors[1]] = 2
 
-			return this.grid
+			return false
 		}
 
 		if (location === 1) {
@@ -89,7 +89,7 @@ class Gameboard{
 			this.hitBoatCount++
 			if (this.hitBoatCount === 17) gameOver()
 
-			return this.grid
+			return true
 		}
 
 		return this.grid
@@ -111,15 +111,11 @@ class Gameboard{
 	getLimitedGrid(){
 		let clearedGrid = _.cloneDeep(this.grid)
 		
-		
 		clearedGrid.forEach((el)=>{
 			el.forEach((cor, index, arr )=>{
-
 				if (arr[index] === 1) {arr[index] = 0}
 			})
 		})
-		
-		// console.log(clearedGrid)
 
 		return clearedGrid
 	}

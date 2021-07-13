@@ -1,37 +1,35 @@
+import _ from "lodash"
 import { _gameboard } from "./gameboard"
 
 class Player {
-	constructor(){
+	constructor(name){
 		this.gameboard = _gameboard(10)
+		this.name = name
 		this.score = 0
-		this.shipOptions = ['carrier', 'battleship', 'cruiser', 'sub', 'destroyer']
-		this.enemyBoard
-	}
-
-	// positionVessels(orientation, pin){
-	// 	this.gameboard.placeShip(this.shipOptions[0], orientation, pin)
-
-	// 	return this.gameboard.grid
-	// }
-
-	sendAttack(enemy, coordinates){
-		enemy.gameboard.receiveAttack(coordinates)
+		// this.shipOptions = ['carrier', 'battleship', 'cruiser', 'sub', 'destroyer']
+		this.enemyBoard = []
 	}
 
 	getEnemyMap(enemy){
-		let enemyBoordCopy = enemy.gameboard
-		enemyBoordCopy.grid.forEach((el)=>{
-			el.forEach((cor)=>{
-				if (cor === 1) {cor = 0}
-			})
-		})
+		this.enemyBoard = enemy.gameboard.getLimitedGrid()
 
-		//TODO refactor, send changes instead of iterating through arrays every time, lazy ass
-
-		return enemyBoordCopy.grid
+		return this.enemyBoard
 	}
+
+	positionVessels(name, orientation, pin){
+		this.gameboard.placeShip(name, orientation, pin) //TODO if you call the property it is not saved, idk wtf is going one, refactor later
+			
+		return this.gameboard.grid
+	}
+
+	sendAttack(enemy, coordinates){
+		if (enemy.gameboard.receiveAttack(coordinates)) { this.score++ }
+		
+		return this.getEnemyMap(enemy)
+	}
+
 }
 
-export function _player(){
-	return new Player()
+export function _player(name){
+	return new Player(name)
 }
