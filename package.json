@@ -21,6 +21,7 @@
   "devDependencies": {
     "css-loader": "^5.2.6",
     "jest": "^27.0.6",
+    "lodash": "^4.17.21",
     "node-sass": "^6.0.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.0.0",

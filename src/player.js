@@ -5,13 +5,14 @@ class Player {
 		this.gameboard = _gameboard(10)
 		this.score = 0
 		this.shipOptions = ['carrier', 'battleship', 'cruiser', 'sub', 'destroyer']
+		this.enemyBoard
 	}
 
-	positionVessels(orientation, pin){
-		this.gameboard.placeShip(this.shipOptions[0], orientation, pin)
+	// positionVessels(orientation, pin){
+	// 	this.gameboard.placeShip(this.shipOptions[0], orientation, pin)
 
-		return this.gameboard.grid
-	}
+	// 	return this.gameboard.grid
+	// }
 
 	sendAttack(enemy, coordinates){
 		enemy.gameboard.receiveAttack(coordinates)

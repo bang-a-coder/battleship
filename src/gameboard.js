@@ -1,3 +1,4 @@
+import _ from "lodash"
 import { _ship } from "./ship"
 
 class Gameboard{
@@ -105,6 +106,22 @@ class Gameboard{
 				}
 			}
 		}	
+	}
+
+	getLimitedGrid(){
+		let clearedGrid = _.cloneDeep(this.grid)
+		
+		
+		clearedGrid.forEach((el)=>{
+			el.forEach((cor, index, arr )=>{
+
+				if (arr[index] === 1) {arr[index] = 0}
+			})
+		})
+		
+		// console.log(clearedGrid)
+
+		return clearedGrid
 	}
 
 	gameOver(){
