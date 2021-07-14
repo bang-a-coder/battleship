@@ -8,6 +8,7 @@ class Player {
 		this.score = 0
 		// this.shipOptions = ['carrier', 'battleship', 'cruiser', 'sub', 'destroyer']
 		this.enemyBoard = []
+		this.successfulHits = []
 	}
 
 	getEnemyMap(enemy){
@@ -23,11 +24,24 @@ class Player {
 	}
 
 	sendAttack(enemy, coordinates){
-		if (enemy.gameboard.receiveAttack(coordinates)) { this.score++ }
+		if (enemy.gameboard.receiveAttack(coordinates)) { 
+			this.score++ 
+			this.successfulHits.push(coordinates)
+		}
 		
 		return this.getEnemyMap(enemy)
 	}
 
+	randomAttack(enemy){
+		const yAxis = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+		let attackCoors = _.sample(yAxis) + _.random(0,10)
+		if (this.successfulHits.indexOf(attackCoors) !== -1) {
+			this.randomAttack(enemy)
+			return
+		}
+		return this.sendAttack(enemy, attackCoors)
+
+	}
 }
 
 export function _player(name){

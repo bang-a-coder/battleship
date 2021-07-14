@@ -17,7 +17,7 @@ playerB.positionVessels("cruiser", "x", "B5");
 playerB.positionVessels("sub", "x", "A6");
 playerB.positionVessels("destroyer", "x", "J5");
 
-test('player A add carrier', ()=>{
+xtest('player A add carrier', ()=>{
 	expect(playerA.positionVessels('carrier', 'x', 'A0')).toEqual(
 		[
 			[1, 1, 1, 1, 1, 0, 1, 1, 1, 0],
@@ -34,7 +34,7 @@ test('player A add carrier', ()=>{
 	)
 })
 
-test('player B add carrier', ()=>{
+xtest('player B add carrier', ()=>{
 	expect(playerB.positionVessels('carrier', 'y', 'A0')).toEqual(
 		[
 			[1, 1, 1, 1, 1, 0, 1, 1, 1, 0],
@@ -102,6 +102,23 @@ test('playerA attack B A0', ()=>{
 	)
 })
 
+test('playB board after attacked', ()=>{
+	expect(playerB.gameboard.grid).toEqual(
+		[
+			[3, 1, 1, 1, 1, 0, 1, 1, 1, 0],
+			[1, 0, 0, 0, 0, 1, 1, 1, 0, 0],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 1, 1, 0, 0, 0]	
+		]
+	)
+})
+
 test('playerB attack A D0', ()=>{
 	expect(playerB.sendAttack(playerA, 'D0')).toEqual(
 		[
@@ -118,3 +135,23 @@ test('playerB attack A D0', ()=>{
 		]
 	)
 })
+
+
+test('playA board after attacked', ()=>{
+	expect(playerA.gameboard.grid).toEqual(
+		[
+			[1, 1, 1, 1, 1, 0, 1, 1, 1, 0],
+			[1, 0, 0, 0, 0, 1, 1, 1, 0, 0],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[3, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0, 1, 1, 0, 0, 0]	
+		]
+	)
+})
+
+// console.log(playerA.randomAttack(playerB))
