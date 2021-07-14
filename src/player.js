@@ -11,12 +11,13 @@ class Player {
 		this.successfulHits = []
 		this.enemyBoardDom = obj.enemyBoardDom
 		this.selfBoardDom = obj.selfBoardDom
+		this.yAxisOption = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 	}
 
 	getEnemyMap(enemy){
 		this.enemyBoard = enemy.gameboard.getLimitedGrid()
 
-		return this.enemyBoard
+		return this.enemyBoard		// TODO object property is not updated 
 	}
 
 	positionVessels(name, orientation, pin){
@@ -35,13 +36,19 @@ class Player {
 	}
 
 	randomAttack(enemy){
-		const yAxis = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-		let attackCoors = _.sample(yAxis) + _.random(0,10)
+		let attackCoors = _.sample(this.yAxisOption) + _.random(0,10)
 		if (this.successfulHits.indexOf(attackCoors) !== -1) {
 			this.randomAttack(enemy)
 			return
 		}
 		return this.sendAttack(enemy, attackCoors)
+	}
+
+	visualiseOnBoard(){
+
+		for (let xDim = 0; i<this.gameboard.grid.length; i++){
+
+		}
 	}
 
 	sampleInit(ver){
