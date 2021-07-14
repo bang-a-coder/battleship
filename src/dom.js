@@ -10,5 +10,9 @@ export function createGrid(gridID){
 		}
 	}
 
-	
+	return grid
+}
+
+export function getDiv(grid, id){
+	return grid.querySelector(`#${id}`)
 }

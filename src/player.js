@@ -2,13 +2,15 @@ import _ from "lodash"
 import { _gameboard } from "./gameboard"
 
 class Player {
-	constructor(name){
+	constructor(obj){
 		this.gameboard = _gameboard(10)
-		this.name = name
+		this.name = obj.name
 		this.score = 0
-		// this.shipOptions = ['carrier', 'battleship', 'cruiser', 'sub', 'destroyer']
+		this.sampleShipOptions = ['carrier', 'battleship', 'cruiser', 'sub', 'destroyer']	//TODO remove when proper ship placement is applied
 		this.enemyBoard = []
 		this.successfulHits = []
+		this.enemyBoardDom = obj.enemyBoardDom
+		this.selfBoardDom = obj.selfBoardDom
 	}
 
 	getEnemyMap(enemy){
@@ -40,7 +42,24 @@ class Player {
 			return
 		}
 		return this.sendAttack(enemy, attackCoors)
+	}
 
+	sampleInit(ver){
+		if (ver === 'A'){
+			this.positionVessels("carrier", "x", "A0");
+			this.positionVessels("battleship", "y", "B0");
+			this.positionVessels("cruiser", "x", "B5");
+			this.positionVessels("sub", "x", "A6");
+			this.positionVessels("destroyer", "x", "J5");
+		}
+
+		if (ver === 'B') {
+			this.positionVessels("carrier", "x", "B0");
+			this.positionVessels("battleship", "y", "C0");
+			this.positionVessels("cruiser", "x", "J5");
+			this.positionVessels("sub", "x", "B6");
+			this.positionVessels("destroyer", "x", "H0");	
+		}
 	}
 }
 
