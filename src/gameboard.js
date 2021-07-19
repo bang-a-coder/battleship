@@ -1,8 +1,11 @@
 import _ from "lodash"
+import { decipherCors, revertCors } from "./helpers"
 import { _ship } from "./ship"
 
 class Gameboard{
-	constructor(n){
+	constructor(n, DOMboard){
+		console.log(DOMboard)
+
 		this.grid = []
 
 		this.createGrid(n)
@@ -13,6 +16,7 @@ class Gameboard{
 
 		this.fleetFormation = {}
 		this.hitBoatCount = 0
+		this.DOMboard = DOMboard
 	}
 
 	createGrid(n){			//TODO refactor to support multiple dimensions, trip balls, fuck bitches
@@ -24,10 +28,10 @@ class Gameboard{
 		return this.grid
 	}
 
-	visualiseBoard(DOMboard) {
+	visualiseBoard() {
 		for (let vessel in this.fleetFormation){
 			for (let coord of this.fleetFormation[vessel].cors){
-				DOMboard.querySelector(`#${revertCors(coord)}`).classList.add('ship-here')
+				this.DOMboard.querySelector(`#${revertCors(coord)}`).classList.add('white')
 			}
 		}
 
@@ -97,6 +101,7 @@ class Gameboard{
 			this.grid[attackCors[0]][attackCors[1]] = 3
 			this.findAndHitShip(coordinates)
 			this.hitBoatCount++
+			this.DOMboard.querySelector(`#${coordinates}`).classList.add('red')
 			if (this.hitBoatCount === 17) gameOver()
 
 			return true
@@ -135,21 +140,9 @@ class Gameboard{
 	}
 }
 
-export function _gameboard(obj){
-	return new Gameboard(obj)
+export function _gameboard(n, DOMboard){
+	return new Gameboard(n, DOMboard)
 }
 
 
-export function decipherCors(str){
-	let abRef = 'ABCDEFGHIJ'
-	let brokenStr = str.split('')
-
-	return [abRef.indexOf(brokenStr[0]), parseInt(brokenStr[1])]
-}
-
-export function revertCors(arr){
-	let abRef = 'ABCDEFGHIJ'
-	
-	return `${abRef[arr[0]]}${arr[1]}`
-}
 

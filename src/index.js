@@ -7,7 +7,6 @@ console.log('workingggggggggggggg?')
 let playerASide = document.querySelector('#playerA-view')
 let playerBSide = document.querySelector('#playerB-view')
 
-console.log(playerASide.querySelector('#enemy-grid'))
 
 let pAEnemyGrid = createGrid(playerASide.querySelector('#enemy-grid'))
 let pASelfGrid = createGrid(playerASide.querySelector('#player-grid'))
@@ -33,6 +32,8 @@ playerA.sampleInit('A')
 playerB.sampleInit('B')
 
 playerA.visualiseMyBoard()
+playerB.visualiseMyBoard()
+playerA.gameboard.receiveAttack('A0')
 
 console.log(playerA)
 console.log(playerB)

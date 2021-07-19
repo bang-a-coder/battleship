@@ -1,9 +1,9 @@
 import _ from "lodash"
 import { _gameboard } from "./gameboard"
+import { revertCors } from "./helpers"
 
 class Player {
 	constructor(obj){
-		this.gameboard = _gameboard(10)
 		this.name = obj.name
 		this.score = 0
 		this.sampleShipOptions = ['carrier', 'battleship', 'cruiser', 'sub', 'destroyer']	//TODO remove when proper ship placement is applied
@@ -12,6 +12,8 @@ class Player {
 		this.enemyBoardDom = obj.enemyBoardDom
 		this.selfBoardDom = obj.selfBoardDom
 		this.yAxisOption = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+		this.gameboard = _gameboard(10, this.selfBoardDom)
+
 	}
 
 	getEnemyMap(enemy){
@@ -30,6 +32,7 @@ class Player {
 		if (enemy.gameboard.receiveAttack(coordinates)) { 
 			this.score++ 
 			this.successfulHits.push(coordinates)
+			this.selfBoardDom.querySelector(`#${revertCors(coordinates)}`).classList.add('hit-succsess')
 		}
 		
 		return this.getEnemyMap(enemy)
@@ -45,7 +48,7 @@ class Player {
 	}
 
 	visualiseMyBoard(){
-		this.gameboard.visualiseBoard(this.selfBoardDom)
+		this.gameboard.visualiseBoard()
 	}
 
 	sampleInit(ver){			//Temporary shit
