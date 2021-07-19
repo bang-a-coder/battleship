@@ -10,3 +10,16 @@ export function revertCors(arr){
 	
 	return `${abRef[arr[0]]}${arr[1]}`
 }
+
+export function getShipLen(name){
+	const fleet = {
+		'carrier': 5,
+		'battleship': 4,
+		'cruiser': 3,
+		'sub': 3,
+		'destroyer': 2,
+		'jetski': 1
+	}
+
+	return fleet[name]
+}

@@ -1,3 +1,5 @@
+import { getShipLen } from "./helpers"
+
 class Ship {
 	constructor(obj){
 		this.name = obj.name
@@ -25,17 +27,4 @@ class Ship {
 
 export function _ship(obj) {
 	return new Ship(obj)
-}
-
-export function getShipLen(name){
-	const fleet = {
-		'carrier': 5,
-		'battleship': 4,
-		'cruiser': 3,
-		'sub': 3,
-		'destroyer': 2,
-		'jetski': 1
-	}
-
-	return fleet[name]
 }

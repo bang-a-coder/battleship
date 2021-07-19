@@ -4,15 +4,12 @@ import { _ship } from "./ship"
 
 class Gameboard{
 	constructor(n, DOMboard){
-
 		this.grid = []
-
 		this.createGrid(n)
 		// 0 -> empty slot
 		// 1 -> boat there
 		// 2 -> hit miss
 		// 3 -> hit boat
-
 		this.fleetFormation = {}
 		this.hitBoatCount = 0
 		this.DOMboard = DOMboard
@@ -33,8 +30,6 @@ class Gameboard{
 				this.DOMboard.querySelector(`#${revertCors(coord)}`).classList.add('white')
 			}
 		}
-
-
 	} 
 
 	placeShip(name, orient, pin) {
@@ -119,18 +114,6 @@ class Gameboard{
 				}
 			}
 		}	
-	}
-
-	getLimitedGrid(){
-		let clearedGrid = _.cloneDeep(this.grid)
-		
-		clearedGrid.forEach((el)=>{
-			el.forEach((cor, index, arr )=>{
-				if (arr[index] === 1) {arr[index] = 0}
-			})
-		})
-
-		return clearedGrid
 	}
 
 	gameOver(){

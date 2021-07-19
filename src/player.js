@@ -16,12 +16,6 @@ class Player {
 		console.log(this.enemyBoardDom)
 	}
 
-	getEnemyMap(enemy){
-		this.enemyBoard = enemy.gameboard.getLimitedGrid()
-
-		return this.enemyBoard		// TODO object property is not updated 
-	}
-
 	positionVessels(name, orientation, pin){
 		this.gameboard.placeShip(name, orientation, pin) //TODO if you call the property it is not saved, idk wtf is going one, refactor later
 			
