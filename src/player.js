@@ -32,7 +32,7 @@ class Player {
 		if (enemy.gameboard.receiveAttack(coordinates)) { 
 			this.score++ 
 			this.successfulHits.push(coordinates)
-			this.selfBoardDom.querySelector(`#${revertCors(coordinates)}`).classList.add('hit-succsess')
+			this.enemyBoardDom.querySelector(`#${coordinates}`).classList.add('red')
 		}
 		
 		return this.getEnemyMap(enemy)

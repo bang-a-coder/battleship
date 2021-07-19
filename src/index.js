@@ -34,6 +34,7 @@ playerB.sampleInit('B')
 playerA.visualiseMyBoard()
 playerB.visualiseMyBoard()
 playerA.gameboard.receiveAttack('A0')
+playerA.sendAttack(playerB, 'A2')
 
 console.log(playerA)
 console.log(playerB)
