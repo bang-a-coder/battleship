@@ -33,9 +33,11 @@ class Player {
 			this.score++ 
 			this.successfulHits.push(coordinates)
 			this.enemyBoardDom.querySelector(`#${coordinates}`).classList.add('red')
+
+			return
 		}
 		
-		return this.getEnemyMap(enemy)
+		this.enemyBoardDom.querySelector(`#${coordinates}`).classList.add('white')
 	}
 
 	randomAttack(enemy){
