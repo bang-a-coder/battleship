@@ -44,28 +44,29 @@ class Player {
 		return this.sendAttack(enemy, attackCoors)
 	}
 
-	visualiseOnBoard(){
-
-		for (let xDim = 0; i<this.gameboard.grid.length; i++){
-
-		}
+	visualiseMyBoard(){
+		this.gameboard.visualiseBoard(this.selfBoardDom)
 	}
 
-	sampleInit(ver){
+	sampleInit(ver){			//Temporary shit
 		if (ver === 'A'){
 			this.positionVessels("carrier", "x", "A0");
-			this.positionVessels("battleship", "y", "B0");
+			this.positionVessels("battleship", "y", "C0");
 			this.positionVessels("cruiser", "x", "B5");
 			this.positionVessels("sub", "x", "A6");
 			this.positionVessels("destroyer", "x", "J5");
+
+			this.visualiseMyBoard()
 		}
 
 		if (ver === 'B') {
-			this.positionVessels("carrier", "x", "B0");
+			this.positionVessels("carrier", "x", "A0");
 			this.positionVessels("battleship", "y", "C0");
 			this.positionVessels("cruiser", "x", "J5");
 			this.positionVessels("sub", "x", "B6");
 			this.positionVessels("destroyer", "x", "H0");	
+
+			this.visualiseMyBoard()
 		}
 	}
 }

@@ -32,5 +32,7 @@ const playerB = _player({
 playerA.sampleInit('A')
 playerB.sampleInit('B')
 
+playerA.visualiseMyBoard()
+
 console.log(playerA)
 console.log(playerB)

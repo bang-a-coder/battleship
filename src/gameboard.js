@@ -24,6 +24,16 @@ class Gameboard{
 		return this.grid
 	}
 
+	visualiseBoard(DOMboard) {
+		for (let vessel in this.fleetFormation){
+			for (let coord of this.fleetFormation[vessel].cors){
+				DOMboard.querySelector(`#${revertCors(coord)}`).classList.add('ship-here')
+			}
+		}
+
+
+	} 
+
 	placeShip(name, orient, pin) {
 		const newShip = _ship({
 			name: name,
@@ -135,5 +145,11 @@ export function decipherCors(str){
 	let brokenStr = str.split('')
 
 	return [abRef.indexOf(brokenStr[0]), parseInt(brokenStr[1])]
+}
+
+export function revertCors(arr){
+	let abRef = 'ABCDEFGHIJ'
+	
+	return `${abRef[arr[0]]}${arr[1]}`
 }
 
