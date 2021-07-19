@@ -106,7 +106,6 @@ class Gameboard{
 			return true
 		}
 
-		return this.grid
 	}
 
 	findAndHitShip(coordinates){
