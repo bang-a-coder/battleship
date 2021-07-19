@@ -4,7 +4,6 @@ import { _ship } from "./ship"
 
 class Gameboard{
 	constructor(n, DOMboard){
-		console.log(DOMboard)
 
 		this.grid = []
 

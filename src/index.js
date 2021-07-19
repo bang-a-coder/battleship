@@ -19,13 +19,13 @@ let pBSelfGrid = createGrid(playerBSide.querySelector('#player-grid'))
 const playerA = _player({
 	name: 'Aa',
 	enemyBoardDom: pAEnemyGrid,
-	selfBoardDom: pASelfGrid
+	selfBoardDom: pASelfGrid,
 })
 
 const playerB = _player({
 	name: 'Bb',
 	enemyBoardDom: pBEnemyGrid,
-	selfBoardDom: pBSelfGrid
+	selfBoardDom: pBSelfGrid,
 })
 
 playerA.sampleInit('A')
@@ -33,8 +33,12 @@ playerB.sampleInit('B')
 
 playerA.visualiseMyBoard()
 playerB.visualiseMyBoard()
-playerA.gameboard.receiveAttack('A0')
-playerA.sendAttack(playerB, 'A2')
+
+playerA.eventToEnemyBoard(playerB)
+playerB.eventToEnemyBoard(playerA)
+// playerA.sendAttack(playerB, 'A2')	
+
+
 
 console.log(playerA)
 console.log(playerB)

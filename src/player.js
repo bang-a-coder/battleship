@@ -13,7 +13,7 @@ class Player {
 		this.selfBoardDom = obj.selfBoardDom
 		this.yAxisOption = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 		this.gameboard = _gameboard(10, this.selfBoardDom)
-
+		console.log(this.enemyBoardDom)
 	}
 
 	getEnemyMap(enemy){
@@ -70,6 +70,16 @@ class Player {
 			this.positionVessels("destroyer", "x", "H0");	
 
 			this.visualiseMyBoard()
+		}
+	}
+
+	eventToEnemyBoard(enemy){
+		let childer = this.enemyBoardDom.childNodes
+		for (let div = 0; div<childer.length; div++){
+			childer[div].addEventListener('click', ()=>{
+				console.log('clicked')
+				this.sendAttack(enemy, childer[div].id)
+			})
 		}
 	}
 }

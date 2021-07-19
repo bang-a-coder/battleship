@@ -1,4 +1,4 @@
-export function createGrid(gridID){
+export function createGrid(gridID, enemy, player){
 	let grid = gridID
 	const yAxis = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 	for (let letter of yAxis){
@@ -6,6 +6,9 @@ export function createGrid(gridID){
 			let position = document.createElement('div')
 			position.classList.add('position')
 			position.id = `${letter + i}`
+			// if (enemy) position.addEventListener('click',()=>{
+			// 	player.
+			// })
 			grid.appendChild(position)
 		}
 	}
