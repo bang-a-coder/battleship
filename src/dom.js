@@ -1,7 +1,11 @@
+import { Player } from "./player"
+
 class DOM {
 	constructor(obj){
 		this.playerGrid = this.createGrid(obj.playerGridDIV)
-		this.enemyGrid = this.createGrid(obj.enemyGridDIV)
+		this.enemyGridView = this.createGrid(obj.enemyGridDIV)
+
+		this.clickeventToBoard()
 	}
 
 	createGrid(gridDIV){
@@ -20,8 +24,21 @@ class DOM {
 		}
 	
 		return grid
-	}	
+	}
+
+	clickeventToBoard(){
+		let childer = this.enemyGridView.childNodes
+		for (let div = 0; div<childer.length; div++){
+			childer[div].addEventListener('click', ()=>{
+				console.log('clicked')
+				this.sendAttack(enemy, childer[div].id)
+			})
+		}
+	}
 	
+	// hitSelf(coors){
+	// 	this.playerGrid.querySelector
+	// }
 }
 
 export function _DOM(obj){

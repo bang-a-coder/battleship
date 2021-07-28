@@ -3,7 +3,7 @@ import { _DOM } from "./dom"
 import { _gameboard } from "./gameboard"
 import { revertCors } from "./helpers"
 
-class Player {
+export class Player {
 	constructor(obj){
 		this.name = obj.name
 		this.score = 0
@@ -20,11 +20,11 @@ class Player {
 		// this.selfBoardDom = obj.selfBoardDom
 
 
-		this.enemyBoardDom = this.DOM.enemyGrid
-		this.selfBoardDom = this.DOM.playerGrid 
+		this.enemyBoardDom = this.DOM.enemyGridView
+		// this.selfBoardDom = this.DOM.playerGrid 
 
 		this.yAxisOption = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-		this.gameboard = _gameboard(10, this.selfBoardDom)
+		this.gameboard = _gameboard(10, this.DOM.playerGrid)
 		// console.log(this.enemyBoardDom)
 	}
 
