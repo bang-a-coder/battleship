@@ -1,4 +1,5 @@
 import _ from "lodash"
+import { _DOM } from "./dom"
 import { _gameboard } from "./gameboard"
 import { revertCors } from "./helpers"
 
@@ -7,13 +8,24 @@ class Player {
 		this.name = obj.name
 		this.score = 0
 		this.sampleShipOptions = ['carrier', 'battleship', 'cruiser', 'sub', 'destroyer']	//TODO remove when proper ship placement is applied
-		this.enemyBoard = []
+		// this.enemyBoard = []
 		this.successfulHits = []
-		this.enemyBoardDom = obj.enemyBoardDom
-		this.selfBoardDom = obj.selfBoardDom
+
+		this.DOM = _DOM({
+			playerGridDIV: obj.playerGridDIV,
+			enemyGridDIV: obj.enemyGridDIV
+		})
+
+		// this.enemyBoardDom = obj.enemyBoardDom
+		// this.selfBoardDom = obj.selfBoardDom
+
+
+		this.enemyBoardDom = this.DOM.enemyGrid
+		this.selfBoardDom = this.DOM.playerGrid 
+
 		this.yAxisOption = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 		this.gameboard = _gameboard(10, this.selfBoardDom)
-		console.log(this.enemyBoardDom)
+		// console.log(this.enemyBoardDom)
 	}
 
 	positionVessels(name, orientation, pin){
